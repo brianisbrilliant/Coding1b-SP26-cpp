@@ -15,6 +15,8 @@ int main() {
     cout << "Let's learn about vectors!\n";
 
     string input;
+    // int numberInput = stoi(input);
+
 
     do {
         cout << "What would you like to do?\n";
@@ -73,8 +75,36 @@ int main() {
                 // the value that the iter is pointing at.
             cout << "iter is pointing at " << *iter << ".\n";
 
+            iter += 1;
 
+            cout << "Now iter is pointing at " << *iter << ".\n";
 
+            cout << "What name would you like to select?\n";
+
+            getline(cin, input);
+            // use the find algorithm
+            iter = find(favs.begin(), favs.end(), input);
+            
+            if(iter != favs.end()) {
+                cout << "We've found " << *iter << "!\n";
+                cout << "Would you like to change this fav?\n";
+                getline(cin, input);
+
+                if (input == "yes") {
+                    cout << "What would you like to change this fav to?\n";
+                    getline(cin, input);
+
+                    *iter = input;      // changing the fav.
+                }
+
+                cout << "here are your updated favs!\n";
+                for(int i = 0; i < favs.size(); i++) {
+                    cout << "    " << favs[i] << "\n";
+                }
+            }
+            else {
+                cout << "We couldn't find that name.\n";
+            }
 
         }
         else if(input == "quit") {
